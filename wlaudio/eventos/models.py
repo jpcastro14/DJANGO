@@ -11,6 +11,8 @@ class Base(models.Model):
         abstract = True;
 
 
+
+
 class Curso(Base):
     titulo = models.CharField(max_length=255)
     url = models.URLField(unique=True)
@@ -36,3 +38,10 @@ class Avaliacao(Base):
 
     def __str__(self):
         return f'{self.nome} avaliou o curso {self.curso} com nota {self.avaliacao}'
+    
+    
+class Event(models.Model):
+    nome = models.CharField(max_length=255)
+    local = models.CharField(max_length=255)
+    data = models.DateField()
+    technician = models.ForeignKey(Curso, related_name="technician", on_delete=models.CASCADE)

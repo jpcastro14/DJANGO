@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Curso, Avaliacao
+from .models import Curso, Avaliacao, Event
 
 
 class AvaliacaoSerializer(serializers.ModelSerializer):
@@ -31,4 +31,14 @@ class CursoSerializer(serializers.ModelSerializer):
             'url',
             'criacao',
             'ativo'
+        ]
+    
+class EventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = [
+            'nome',
+            'local',
+            'data',
+            'technician'
         ]
